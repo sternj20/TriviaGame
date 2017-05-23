@@ -6,24 +6,50 @@ $(document).ready(function() {
 
 	var timerInterval;
 	var timeRemaining;
+
 	//array of objects to store my trivia information
 	var trivia = [{
-		question: 'What does alcohol NOT do to you?',
-		answers: ['impair your judgement', 'affects your ability to operate heavy machinery', 'keeps you warm', 'dance', 'Dilates warm blood vessels near the skin, creating the impression of warmth. It can drop core body temp.'],
-		answerInfo: 'Dilates warm blood vessels near the skin, creating the impression of warmth. It can drop core body temp.'},
+		question: 'Who created Javascript?',
+		answers: ['Bill Gates', 'Jacky "Javascript" Heralda', 'Brendan Eich', 'Marc Andreessen'],
+		answerInfo: 'Brendan Eich',
+		image: 'assets/images/eich.jpg'
+		},
 		{
-		question: 'A question',
-		answers: ['some answers', 'some more answers'],
-		answerInfo: 'some answers'},
+		question: 'Who created JQuery?',
+		answers: ['Brendan Eich', 'Christian Vuerrings', 'James Gosling', 'John Resig'],
+		answerInfo: 'John Resig',
+		image: 'assets/images/resig.jpg'
+		},
 		{
-			question: 'anothe rquestion',
-			answers: ['definitely made this one up', 'and this one'],
-			answerInfo: 'definitely made this one up'
-		}	
+		question: 'Who created Bootstrap?',
+		answers: ['Ren and Stimpy', 'Kevin Systrom and Mike Krieger', 'Mark Otto and Jacob Thornton', 'Steve Jobs and Steve Wozniak'],
+		answerInfo: 'Mark Otto and Jacob Thornton',
+		image: 'assets/images/bootstrap.jpg'
+		},
+		{
+		question: 'Where was the first computer built?',
+		answers: ['Mountain View, CA', 'Room 808 in Uc Berkeley Extension Building on Spear Street', 'University of Pennsylvania', 'Stanford'],
+		answerInfo: 'University of Pennsylvania',
+		image: 'assets/images/upenn.gif'
+		},
+		{
+		question: 'Who created CSS?',
+		answers: ['Haakon Wium Lie', 'Jordan Walke', 'Bjarne Stroustrup', 'Jayson Phillips'],
+		answerInfo: 'Haakon Wium Lie',
+		image: 'assets/images/hakon.jpg'
+		},
+		{
+		question: 'Who created HTML?',
+		answers: ['Yukihiro Matsumoto', 'Tim Berners-Lee', 'Guido van Rossum', 'Peter Thiel'],
+		answerInfo: 'Tim Berners-Lee',
+		image: 'assets/images/berners.jpg'
+		}
 		];
 
 
+	//reset the game
 	function reset(){
+		$(".winnerSection").text('');
 		timeRemaining = 30;
 		$(".timeNum").text(timeRemaining);
 		$(".startSection").hide();
@@ -32,15 +58,15 @@ $(document).ready(function() {
 		setTimer();
 		addQuestion();
 	}
+
 	//start button
 	$("#start").on('click', function() {
 		reset();
-		//triggers a function that will show me random guess in my trivia object
 	});
+
 
 	//set the trivia timer
 	function setTimer(){
-		
 		timerInterval = setInterval(count, 1000);
 		$(".timer").show();	
 	}
@@ -56,23 +82,24 @@ $(document).ready(function() {
 		}
 	}
 
-
-
 	//event handler for when user clicks on answers
 	$(document).on('click', '.answers', function(event) {
 		//when users clicks on an answer, a new window pops up
 		$(".triviaContent").hide();
+			//if user picks right answer screen says congratulations, then displays next question
 			if(event.currentTarget.innerText === newQuestion.answerInfo){
 				$(".winnerSection").text('Congratulations, you chose correctly!');
-				$(".winnerSection").show();
 				$(".timer").hide();
+					//the image specific to current object being guessed is created and shown in dom
+			var img = $("<img>");
+				img.attr("src", newQuestion.image);
+				$(".winnerSection").append(img);
 				setTimeout(reset,3000);
 			} else{
+				$(".winnerSection").text('You guessed wrong, try again.');
 				$(".timer").hide();
 				setTimeout(reset,3000);
 			}
-			//if user picks right answer screen says congratulations, then displays next question
-			//if user picks wrong answer screen says you are wrong then displays the correct answer, then next question
 	});
 
 	//add a question
@@ -98,6 +125,10 @@ $(document).ready(function() {
 				console.log(newQuestion.answers[i]);
 			}
 		}
+
+	function showAnswer(outcome){
+		
+	}
 	});
 
 	
