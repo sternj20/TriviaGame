@@ -13,3 +13,7 @@ h1{ font-size: 30px;
 .triviaSection {
 	display:none;
 }
+
+.lose {
+	display:none;
+}
