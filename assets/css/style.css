@@ -1,7 +1,7 @@
 body{
-	size:16px;
+	font-size:20px;
+	font-family: 'Khula', sans-serif;
 	background-color:gray;
-
 }
 
 h1{ font-size: 30px;
@@ -33,7 +33,7 @@ img{
 
 .winnerInfo{
 	float:right;
-	width:30%;
+	width:50%;
 }
 
 .lose {
@@ -46,7 +46,7 @@ button {
 	margin: 10px 0;
 	width:80%;
 	font-size:30px;
-	background:white;
+	background: 146,180,192;
 	border:0;
 }
 
