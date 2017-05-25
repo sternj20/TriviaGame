@@ -114,9 +114,10 @@ function addQuestion() {
 		}
 	} else {
 		$(".triviaSection").hide();
-		var count = $("<div>");
+		clearInterval(timerInterval);
+		var count = $(".outcomes");
 		count.html('You won ' + wins + ' times. You lost ' + losses + ' times');
-		$(".lose").show().append(count);
+		$(".lose").show()
 		wins = 0;
 		losses = 0;
 		createTrivia();
