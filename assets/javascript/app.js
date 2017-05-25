@@ -9,7 +9,7 @@ var losses;
 var trivia = [];
 
 function createTrivia(){
-trivia = [
+	trivia = [
 	{
 		question: 'Who created Javascript?',
 		answers: ['Bill Gates', 'Jacky "Javascript" Heralda', 'Brendan Eich', 'Marc Andreessen'],
@@ -137,19 +137,20 @@ $(document).ready(function() {
 			img.attr("src", newQuestion[0].image);
 		//info about the correct answer
 		var info = $("<p>");
-			info.text(newQuestion[0].info);
+			info.text(newQuestion[0].info).addClass('winnerInfo');
 			$(".winnerSection").append(img);
 			$(".winnerSection").append(info);
 		//if user picks right answer screen says congratulations, then displays next question
 		if(event.currentTarget.innerText === newQuestion[0].answerInfo){
 			wins++;
-			$(".winnerSection").prepend('Congratulations, you chose correctly!');
+			$(".winnerSection").prepend('<h1>Congratulations, you chose correctly!</h1>');
 			$(".timer").hide();	
 			$(".triviaContent").hide();
 			} else{
 				losses++;
-				$(".winnerSection").prepend('<p>You guessed wrong, try again.</p>');
+				$(".winnerSection").prepend('<h1>You guessed wrong, try again.</h1>');
 				$(".timer").hide();
+				$(".triviaContent").hide();
 			}
 	});
 });
